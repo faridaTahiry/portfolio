@@ -7,16 +7,26 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: 'Calendar Coach',
+      description:
+        'LLM-powered time management assistant. Connects to your Google Calendar (read-only), reads your upcoming events, and gives personalized advice to improve focus, reduce overcommitment, and protect deep work.',
+      technologies: ['React', 'Vite', 'Google Calendar API', 'OpenAI', 'Netlify Functions'],
+      category: 'frontend',
+      liveUrl: '/projects/calendar-llm/',
+      githubUrl: '#',
+    },
+    {
+      id: 2,
       title: 'Cloud-Native HRIS Microservices Platform',
       description:
         'Led architectural migration from legacy VM-based batch processor to cloud-native, event-driven microservices on Kubernetes. Designed Server-Worker architecture for horizontal scaling and implemented resilient file ingestion pipelines with distributed tracing.',
       technologies: ['.NET 8', 'Kubernetes', 'NServiceBus', 'PostgreSQL', 'OpenTelemetry', 'Entity Framework Core'],
       category: 'backend',
-      liveUrl: '#',
+      liveUrl: '/projects/demo/',
       githubUrl: '#',
     },
     {
-      id: 2,
+      id: 3,
       title: 'Email Processing Pipeline Optimization',
       description:
         'Modernized email processing system by replacing deprecated OpenPop library with MailKit, reducing processing time from 7 hours to under 10 minutes (99% performance improvement), enabling near real-time processing.',
@@ -26,7 +36,7 @@ const Projects = () => {
       githubUrl: '#',
     },
     {
-      id: 3,
+      id: 4,
       title: 'HRIS Integration Microservice',
       description:
         'Led development of microservice integrating with Merge API to retrieve client-specific HRIS data from third-party systems. Designed CI/CD pipelines, structured logging, and deployed to Azure Kubernetes Service (AKS).',
@@ -36,7 +46,7 @@ const Projects = () => {
       githubUrl: '#',
     },
     {
-      id: 4,
+      id: 5,
       title: 'NServiceBus Messaging Abstraction Library',
       description:
         'Authored internal NuGet package abstracting NServiceBus to standardize messaging across company microservices, improving code reusability and maintainability.',
@@ -46,7 +56,7 @@ const Projects = () => {
       githubUrl: '#',
     },
     {
-      id: 5,
+      id: 6,
       title: 'Analytics & BI Pipelines',
       description:
         'Built data pipelines gathering information from third-party tools (Stripe, Ordway, Salesforce, Hubspot) and performed business intelligence analyses. Produced financial reports using Python pandas, Tableau, and PostgreSQL.',
@@ -56,7 +66,7 @@ const Projects = () => {
       githubUrl: '#',
     },
     {
-      id: 6,
+      id: 7,
       title: 'Time Series Anomaly Detection Research',
       description:
         'Generated time series models using unsupervised learning with LSTM and Matrix Profile for anomaly detection and health monitoring. Contributed to peer-reviewed publication as co-second author.',
@@ -66,7 +76,7 @@ const Projects = () => {
       githubUrl: '#',
     },
     {
-      id: 7,
+      id: 8,
       title: 'Facial Biometric System Research',
       description:
         'Investigated impact of makeup on facial biometric systems using convolutional neural networks and autoencoders. Developed image processing pipeline using OpenCV to convert video segments into training datasets.',
@@ -76,7 +86,7 @@ const Projects = () => {
       githubUrl: '#',
     },
     {
-      id: 8,
+      id: 9,
       title: 'Legacy .NET Modernization Initiative',
       description:
         'Contributed to organization-wide modernization initiative upgrading legacy applications from .NET Framework 4.8 to .NET 8, improving performance, compatibility, and long-term support.',
@@ -87,7 +97,7 @@ const Projects = () => {
     },
   ]
 
-  const categories = ['all', 'backend', 'research']
+  const categories = ['all', 'frontend', 'backend', 'research']
 
   const filteredProjects =
     filter === 'all'

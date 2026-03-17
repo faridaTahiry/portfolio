@@ -3,6 +3,8 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
+import Projects from './components/Projects'
+import Contact from './components/Contact'
 import Footer from './components/Footer'
 import './App.css'
 
@@ -24,7 +26,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills']
+      const sections = ['home', 'about', 'skills', 'projects', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -45,7 +47,7 @@ function App() {
 
   useEffect(() => {
     // Scroll reveal animation
-    const sections = ['home', 'about', 'skills']
+    const sections = ['home', 'about', 'skills', 'projects', 'contact']
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -100px 0px'
@@ -101,6 +103,8 @@ function App() {
         <Hero scrollToSection={scrollToSection} />
         <About />
         <Skills />
+        <Projects />
+        <Contact />
       </main>
       <Footer />
     </div>

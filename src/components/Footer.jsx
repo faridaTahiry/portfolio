@@ -63,6 +63,8 @@ const Footer = () => {
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
             <a href="mailto:farida.tahiry.13@gmail.com">Email</a>
           </div>
           <div className="footer-social">

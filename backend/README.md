@@ -1,83 +1,44 @@
-# Portfolio Contact Form Backend
+# Calendar Coach API (Python)
 
-Python Flask backend for handling contact form submissions and sending emails.
+FastAPI backend for the Calendar Coach project. It reads calendar events from the frontend and returns time-management advice using OpenAI.
 
-## Setup
-
-1. **Create a virtual environment:**
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Configure environment variables:**
-   - Copy `.env.example` to `.env`
-   - Update the following variables:
-     - `MAIL_USERNAME`: Your email address (e.g., Gmail)
-     - `MAIL_PASSWORD`: Your email app password (not your regular password)
-     - `RECIPIENT_EMAIL`: Email address where you want to receive contact form messages
-
-## Gmail Setup
-
-If using Gmail, you'll need to:
-
-1. Enable 2-Factor Authentication on your Google account
-2. Generate an App Password:
-   - Go to Google Account settings
-   - Security → 2-Step Verification → App passwords
-   - Generate a new app password for "Mail"
-   - Use this app password in `MAIL_PASSWORD`
-
-## Running the Server
+## Run locally
 
 ```bash
-python app.py
+cd backend
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+export OPENAI_API_KEY=your-key-here
+uvicorn main:app --reload --port 8000
 ```
 
-The server will run on `http://localhost:5000`
+API: http://localhost:8000  
+- `POST /advice` — body `{ "events": [...] }`, returns `{ "advice": "..." }`  
+- `GET /health` — health check
 
-## API Endpoints
+## Deploy (Python backend)
 
-### POST `/api/contact`
-Send a contact form email.
+Netlify Functions don’t support Python, so deploy this backend to a Python-friendly host and point the frontend at it.
 
-**Request Body:**
-```json
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "message": "Hello, I'm interested in working with you."
-}
-```
+### Render
 
-**Response:**
-```json
-{
-  "success": true,
-  "message": "Email sent successfully!"
-}
-```
+1. New → Web Service, connect your repo.
+2. Root directory: `backend`
+3. Build: `pip install -r requirements.txt`
+4. Start: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+5. Add env var: `OPENAI_API_KEY`
+6. Copy the service URL (e.g. `https://calendar-coach-api.onrender.com`).
 
-### GET `/api/health`
-Health check endpoint.
+### Railway / Fly.io
 
-## Production Deployment
+Same idea: set root to `backend`, run `uvicorn main:app --host 0.0.0.0 --port $PORT` (or the port the platform gives), set `OPENAI_API_KEY`.
 
-For production, consider:
-- Using a production WSGI server like Gunicorn
-- Setting up proper environment variables
-- Using a service like SendGrid or AWS SES for email
-- Adding rate limiting
-- Implementing proper error logging
+## Frontend
 
-### Example with Gunicorn:
-```bash
-pip install gunicorn
-gunicorn -w 4 -b 0.0.0.0:5000 app:app
-```
+In the **calendar-llm** frontend (or in Netlify env for production), set:
 
+- `VITE_CALENDAR_API_URL=https://your-python-api.onrender.com`  
+  (no trailing slash)
+
+The app will send `POST {VITE_CALENDAR_API_URL}/advice` with the calendar events.

@@ -18,6 +18,8 @@ const Navbar = ({ activeSection, scrollToSection, darkMode, setDarkMode }) => {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'contact', label: 'Contact' },
   ]
 
   const handleNavClick = (sectionId) => {

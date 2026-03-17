@@ -2,6 +2,13 @@
   command = "npm run build"
   publish = "dist"
 
+# Project SPAs: any path under /projects/:name/ serves that project's index.html
+[[redirects]]
+  from = "/projects/:name/*"
+  to = "/projects/:name/index.html"
+  status = 200
+
+# Portfolio SPA: all other routes serve the main portfolio
 [[redirects]]
   from = "/*"
   to = "/index.html"
